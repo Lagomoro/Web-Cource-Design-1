@@ -27,6 +27,8 @@ function getCookies(){
     return cookieObj;
 }
 
+onloginSuccess = function(){};
+
 function checkLogin(){
     var cookies = getCookies();
     if(cookies.username){
@@ -35,10 +37,13 @@ function checkLogin(){
                 var a = document.getElementById('login');
                 a.innerText = "欢迎回来，" + json.err_msg + "<" + cookies.username + ">";
                 a.setAttribute('href', './modify.html');
+                onloginSuccess.call(); 
             }
         }, function(json){});
     }
 }
+
+checkLogin();
 
 function logout(){
     var cookies = getCookies();
@@ -53,5 +58,3 @@ function logout(){
         }, function(json){});
     }
 }
-
-checkLogin();
