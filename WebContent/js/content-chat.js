@@ -7,8 +7,4 @@ function checkComments(){
     }, function(json){});
 }
 
-comments_onloginSuccess = onloginSuccess;
-onloginSuccess = function(){
-    comments_onloginSuccess();
-    checkComments();
-}
+checkComments();
